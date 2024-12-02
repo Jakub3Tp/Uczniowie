@@ -22,7 +22,10 @@ class MyForm(QDialog):
             self.ui.failStudents.addItem(item.text())"""
 
     def august(self):
-
+        items = self.ui.students.selectedItems()
+        for item in items:
+            self.ui.failStudents.addItem(item.text())
+            self.ui.students.TakeItem(self.ui.students.row(item))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
