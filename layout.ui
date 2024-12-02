@@ -31,7 +31,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListWidget" name="students">
       <item>
        <property name="text">
         <string>Patryk Janusz</string>
@@ -54,15 +54,22 @@
       </item>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Uczniowie którzy nie zdają:</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QListWidget" name="listWidget_2"/>
+    <item row="2" column="1">
+     <widget class="QListWidget" name="failStudents"/>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QPushButton" name="august">
+      <property name="text">
+       <string>Kierunek sierpień</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
