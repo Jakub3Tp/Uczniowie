@@ -27,7 +27,7 @@ class MyForm(QDialog):
         self.ui.students.addItem(item.text())
 
     def judge(self):
-        with open('text.txt', 'w') as file:
+        with open('./text.txt', 'w') as file:
             for i in range(self.ui.failStudents.count()):
                 file.write(self.ui.failStudents.item(i).text())
                 file.write('\n')
