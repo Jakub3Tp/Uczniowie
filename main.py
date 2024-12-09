@@ -1,4 +1,5 @@
 import sys
+from os import write
 
 from PyQt6.QtWidgets import QDialog, QApplication
 
@@ -10,22 +11,26 @@ class MyForm(QDialog):
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        #self.ui.students.itemSelectionChanged.connect(self.students_fail)
-        self.ui.august.clicked.connect(self.august)
+        self.ui.students.itemClicked.connect(self.students_fail)
+        self.ui.failStudents.itemClicked.connect(self.student_unfail)
+        self.ui.judgement.clicked.connect(self.judge)
         self.show()
 
-    """def students_fail(self):
+    def students_fail(self):
         items = self.ui.students.selectedItems()
-        self.ui.students.removeItemsWidget(items[0])
-        for item in items:
-            self.ui.students.removeItemWidget(item)
-            self.ui.failStudents.addItem(item.text())"""
-
-    def august(self):
-        items = self.ui.students.selectedItems()
+        self.ui.students.takeItem(self.ui.students.currentRow())
         for item in items:
             self.ui.failStudents.addItem(item.text())
-            self.ui.students.TakeItem(self.ui.students.row(item))
+
+    def student_unfail(self):
+        item = self.ui.failStudents.takeItem(self.ui.failStudents.currentRow())
+        self.ui.students.addItem(item.text())
+
+    def judge(self):
+        with open('text.txt', 'w') as file:
+            for i in range(self.ui.failStudents.count()):
+                file.write(self.ui.failStudents.item(i).text())
+                file.write('\n')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
